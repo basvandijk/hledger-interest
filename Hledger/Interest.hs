@@ -91,13 +91,13 @@ mkTrans day days ratePerAnno = do
       pTarget = nullposting
           { paccount       = targetAcc
           , pamount        = mixed [ a { aquantity = (aquantity a * ratePerAnno) / fromInteger perDayScalar * fromInteger days } | a <- amounts bal ]
-          , ptype          = RegularPosting
+          , preal          = RealPosting
           , ptransaction   = Just t
           }
       pSource = nullposting
           { paccount       = srcAcc
           , pamount        = negate (pamount pTarget)
-          , ptype          = RegularPosting
+          , preal          = RealPosting
           , ptransaction   = Just t
           }
   return t
